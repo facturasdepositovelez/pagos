@@ -902,7 +902,9 @@ document.addEventListener('keydown', e => {
       ochocientos:800,novecientos:900,mil:1000,millon:1000000
     };
     const plain = str.replace(/[.,\s]/g,'');
-    if (!isNaN(plain) && plain !== '') return parseFloat(str.replace(',','.'));
+   if (!isNaN(plain) && plain !== '') return parseFloat(plain);
+const argFmt = str.trim().replace(/\.(?=\d{3})/g,'').replace(',','.');
+if (!isNaN(argFmt) && argFmt !== '') return parseFloat(argFmt);
     let s = str.toLowerCase()
       .normalize('NFD').replace(/[̀-ͯ]/g,'')
       .replace(/\bmillones\b/g,'millon').replace(/\bmiles\b/g,'mil').replace(/\by\b/g,' ');
